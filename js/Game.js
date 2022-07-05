@@ -7,10 +7,10 @@ class Game{
      this.missed = 0; 
      this.phrases = [
      new Phrase ("you got this"),
-     new Phrase ("keep on keeping on"), 
-     new Phrase ("the best is yet to be"), 
-     new Phrase ("you talking to me"),
-     new Phrase ("may the force be with you")
+     new Phrase ("Acid rain"), 
+     new Phrase ("Sunshine state"), 
+     new Phrase ("Too long"),
+     new Phrase ("want candy")
     ]; 
      this.activePhrase = null;
     }
@@ -76,15 +76,43 @@ class Game{
         if(gameWon === true){
           document.getElementById("game-over-message").innerHTML = "Wohoo you are the winner!";
           finsihedOverlay.className = ("win");
+           game.resetGame();
             }else{
               document.getElementById("game-over-message").innerHTML = "Sorry better luck next time!";
-              finsihedOverlay.className = ("lose");
+              finsihedOverlay.className = ("lose");  
+           game.resetGame();
             }
+         
 
-       }     
-    
+       } 
+       
+       resetGame() {
+      
+        const resetHearts = document.querySelectorAll('.tries img');
+        const qwerty = document.getElementById('qwerty');
+        const button = qwerty.getElementsByTagName('button');
+        const phraseCheck = document.getElementById('phrase');
+        phraseCheck.querySelector('ul').innerHTML='';
+        
+      
+        this.missed = 0;
+        for (let i = 0; i < button.length; i++) {
+         button[i].disabled = false;
+         button[i].classList.remove('chosen');
+         button[i].classList.remove('wrong');
+        }
+        
+        for (let i = 0; i < resetHearts.length; i++) {
+          resetHearts[i].src = 'images/liveHeart.png';
+        }
+       
+      }
+    }
 
-     }
+
+
+
+     
 
  
 
