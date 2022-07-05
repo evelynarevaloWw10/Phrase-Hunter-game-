@@ -2,13 +2,14 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 
+// constructor with one @para
 class Phrase {
     constructor(phrase){
      this.phrase = phrase.toLowerCase();    
     }
-    addPhraseToDisplay(){
-        let phraseShown = document.querySelector("div#phrase ul");
-        for( let i = 0; i <this.phrase.length; i++ ) {
+    addPhraseToDisplay(){  // display method adds letter placeholder when game starts
+        let phraseShown = document.querySelector("div#phrase ul");// query Selctor to select phrase element
+        for( let i = 0; i <this.phrase.length; i++ ) { // for loop to iterate over phrase.length and replace innerhtml with new values 
             if (this.phrase[i] === " ") {
          phraseShown.innerHTML += `<li class="space"> </li>`       
             } else {
@@ -18,7 +19,7 @@ class Phrase {
     }
     return this.phrase
  } ;
-
+//  checkLetter() to verify if letter matches a phrase  
  checkLetter(letter){
     if (this.phrase.includes(letter)){
         return true;
@@ -26,7 +27,7 @@ class Phrase {
         return false;
      }
  };
-
+// will display if letter matches 
 showMatchedLetter(letter){
    let showLetter = document.querySelectorAll("li")
  for (let i = 0; i < showLetter.length; i++) {
